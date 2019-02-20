@@ -8,69 +8,42 @@ public class Model
 
     public Model()
     {
-        buyers = new ArrayList<>();
+        buyers = new ArrayList<Buyer>();
+    }
+
+    //==========================================================================
+    //  interaction methods
+    //==========================================================================
+    public void addNewBuyer(int id, String name, String surname, int card, int account)
+    {
+        Buyer buyer = new Buyer(id, name, surname, card, account);
+        buyers.add(buyer);
+    }
+
+    public boolean existBuyerId(int id)
+    {
+        for(int i = 0; i < buyers.size(); i++){
+            if(buyers.get(i).getId() == id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Buyer getBuyerById(int id)
+    {
+        for(int i = 0; i < buyers.size(); i++){
+            if(buyers.get(i).getId() == id){
+                return  buyers.get(i);
+            }
+        }
+        return null;
+    }
+
+    public Buyer getBuyersByName(String name)
+    {
+        return null;
     }
 }
 
-class Buyer
-{
-    private int id;
-    private String name;
-    private String surname;
-    private int cardNumber;
-    private int accountNumber;
 
-    public Buyer(int id, String name, String surname, int cardNumber, int accountNumber)
-    {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.cardNumber = cardNumber;
-        this.accountNumber = accountNumber;
-    }
-
-    public String getInfo()
-    {
-        StringBuilder info = new StringBuilder();
-        return info.append(name).append(" ").append(surname).append(": Card number = ").append(cardNumber).
-                append(", Account number = ").append(accountNumber).append("\n").toString();
-    }
-
-    public int getId()
-    {
-        return id;
-    }
-    public String getName()
-    {
-        return name;
-    }
-    public String getSurname()
-    {
-        return surname;
-    }
-    public int getCard()
-    {
-        return cardNumber;
-    }
-    public int getAccount()
-    {
-        return accountNumber;
-    }
-
-    public void setName(String value)
-    {
-        name = value;
-    }
-    public void setSurname(String value)
-    {
-        surname = value;
-    }
-    public void setCard(int value)
-    {
-        cardNumber = value;
-    }
-    public void setAccount(int value)
-    {
-        accountNumber = value;
-    }
-}
