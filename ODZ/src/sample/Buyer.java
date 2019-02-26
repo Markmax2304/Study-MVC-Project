@@ -1,6 +1,8 @@
 package sample;
 
-public class Buyer
+import java.io.Serializable;
+
+public class Buyer implements Serializable
 {
     private int id;
     private String name;
@@ -20,8 +22,8 @@ public class Buyer
     public String getInfo()
     {
         StringBuilder info = new StringBuilder();
-        return info.append(name).append(" ").append(surname).append(": Card number = ").append(cardNumber).
-                append(", Account number = ").append(accountNumber).toString();
+        return info.append("Id(").append(id).append(") ").append(name).append(" ").append(surname).append(": Card number = ").
+                append(cardNumber).append(", Account number = ").append(accountNumber).toString();
     }
 
     public int getId()

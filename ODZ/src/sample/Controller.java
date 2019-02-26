@@ -3,9 +3,11 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import sample.command.CommandAdd;
-import sample.command.CommandRemove;
-import sample.command.ICommand;
+import sample.command.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 public class Controller
 {
@@ -37,12 +39,12 @@ public class Controller
 
     public void editClick()
     {
-        outputArea.setText("Edit");
+        sendCommand(new CommandEdit());
     }
 
     public void showClick()
     {
-        outputArea.setText("Show");
+        sendCommand(new CommandShow());
     }
 
     public void alphabeticSortClick()
@@ -55,14 +57,25 @@ public class Controller
         outputArea.setText("List in interval");
     }
 
+    public void clearOutputClick()
+    {
+        outputArea.clear();
+    }
+
+    public void selectTextField(MouseEvent e)
+    {
+        TextField field = (TextField)e.getSource();
+        field.selectAll();          //select on each click - bug
+    }
+
+    public void saveModelData()
+    {
+        model.saveData();
+    }
+
     private void sendCommand(ICommand cmd)
     {
-        try{
-            cmd.execute(this, model);
-        }
-        catch (Throwable e){
-            addTextOutputArea("Error: " + e.toString());
-        }
+        cmd.execute(this, model);
     }
 
     //==========================================================================
@@ -122,11 +135,6 @@ public class Controller
             throw new Error("ToInterval field is empty.");
         }
         return Integer.parseInt(toIntervalField.getText());
-    }
-
-    public void setTextOutputArea(String text)
-    {
-        outputArea.setText(text + "\n");
     }
 
     public void addTextOutputArea(String text)

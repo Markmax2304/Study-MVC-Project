@@ -81,5 +81,9 @@
          </font>
       </Label>
       <TextField fx:id="fromIntervalField" layoutX="504.0" layoutY="82.0" prefHeight="25.0" prefWidth="25.0" />
+      <Button layoutX="526.0" layoutY="133.0" mnemonicParsing="false" onAction="#clearOutputClick" prefHeight="30.0" prefWidth="58.0" text="Clear">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
    </children>
 </Pane>
