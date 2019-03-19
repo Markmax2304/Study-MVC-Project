@@ -49,12 +49,12 @@ public class Controller
 
     public void alphabeticSortClick()
     {
-        outputArea.setText("Sort");
+        sendCommand(new CommandAlphanumericSort());
     }
 
     public void showListInIntervalClick()
     {
-        outputArea.setText("List in interval");
+        sendCommand(new CommandInervalListCard());
     }
 
     public void clearOutputClick()
