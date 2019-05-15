@@ -12,7 +12,8 @@ public class Model
 
     public Model()
     {
-        dataAccessor = new SerializeAdapter("D:\\My_documents\\Java_projects\\Study-MVC-Project\\ODZ\\DB.dat");
+        String path = System.getProperty("user.dir");
+        dataAccessor = new SerializeAdapter(path + "\\DB.dat");
         buyers = dataAccessor.readBuyersFromDB();
     }
 
